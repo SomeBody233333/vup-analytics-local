@@ -24,14 +24,24 @@ import NotFound from "@spectrum-icons/illustrations/NoSearchResults";
 export default function Info({
   vups,
   onFansImage,
+  onFansHistory,
+  onCoverage,
 }: {
   vups: Vup[];
   onFansImage: (vup: Vup) => void;
+  onFansHistory: (vup: Vup) => void;
+  onCoverage: (vups: Vup[]) => void;
 }) {
   if (vups.length === 0) return <Empty />;
   if (vups.length === 1)
-    return <MonoInfo vup={vups[0]} onFansImage={onFansImage} />;
-  return <MultiInfo vups={vups} />;
+    return (
+      <MonoInfo
+        vup={vups[0]}
+        onFansImage={onFansImage}
+        onFansHistory={onFansHistory}
+      />
+    );
+  return <MultiInfo vups={vups} onCoverage={onCoverage} />;
 }
 
 function Empty() {
@@ -49,9 +59,11 @@ function Empty() {
 function MonoInfo({
   vup,
   onFansImage,
+  onFansHistory,
 }: {
   vup: Vup;
   onFansImage: (vup: Vup) => void;
+  onFansHistory: (vup: Vup) => void;
 }) {
   return (
     <View height={"100%"}>
@@ -96,8 +108,8 @@ function MonoInfo({
             <Text>粉丝画像</Text>
             <ChevronRight />
           </ActionButton>
-          <ActionButton>
-            <Text>View 1.2</Text>
+          <ActionButton onPress={() => onFansHistory(vup)}>
+            <Text>粉丝增减</Text>
             <ChevronRight />
           </ActionButton>
         </Flex>
@@ -106,7 +118,13 @@ function MonoInfo({
   );
 }
 
-function MultiInfo({ vups }: { vups: Vup[] }) {
+function MultiInfo({
+  vups,
+  onCoverage,
+}: {
+  vups: Vup[];
+  onCoverage: (vups: Vup[]) => void;
+}) {
   return (
     <View height={"100%"}>
       <Flex
@@ -134,12 +152,8 @@ function MultiInfo({ vups }: { vups: Vup[] }) {
           direction={"column"}
           gap={"size-100"}
         >
-          <ActionButton>
-            <Text>View 1</Text>
-            <ChevronRight />
-          </ActionButton>
-          <ActionButton>
-            <Text>View 1.2</Text>
+          <ActionButton onPress={() => onCoverage(vups)}>
+            <Text>DD 重合度</Text>
             <ChevronRight />
           </ActionButton>
         </Flex>

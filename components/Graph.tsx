@@ -11,6 +11,7 @@ import {
   ListView,
   ActionButton,
   Flex,
+  View,
 } from "@adobe/react-spectrum";
 import NotFound from "@spectrum-icons/illustrations/NotFound";
 import Close from "@spectrum-icons/workflow/Close";
@@ -53,7 +54,11 @@ export default function Graph({
         </TabList>
         <TabPanels>
           {tabs.map((tab) => (
-            <Item key={tab.id}>{tab.panel}</Item>
+            <Item key={tab.id}>
+              <View paddingX={"size-150"} paddingY={"size-200"}>
+                {tab.panel}
+              </View>
+            </Item>
           ))}
         </TabPanels>
       </Tabs>

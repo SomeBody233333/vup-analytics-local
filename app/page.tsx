@@ -9,6 +9,8 @@ import * as _ from "lodash";
 import Graph from "@/components/Graph";
 import Tab from "@/types/Tab";
 import FansImageWordCloud from "@/components/graph/FansImageWordCloud";
+import FansHistoryLine from "@/components/graph/FansHistoryLine";
+import FansCoverageUpset from "@/components/graph/FansCoverageUpset";
 
 export default function Home() {
   const [selectedVupKeys, setSelectedVupKeys] = React.useState<Set<string>>(
@@ -27,6 +29,11 @@ export default function Home() {
       level: 6,
       description: "大家好啊，今天想看什么姿势呢？",
       fanTag: [{ tag: "hard", frequency: 12 }],
+      fansHistory: [
+        { date: "2022-3-12", fans: 1029 },
+        { date: "2022-3-13", fans: 1040 },
+      ],
+      fans: ["1", "2", "3", "4"],
     },
     {
       name: "家庭",
@@ -36,6 +43,8 @@ export default function Home() {
       level: 0,
       description: "Home...",
       fanTag: [],
+      fansHistory: [{ date: "2022-3-12", fans: 1029 }],
+      fans: ["1", "3"],
     },
   ];
 
@@ -69,6 +78,30 @@ export default function Home() {
                 id: `${tabNumber}`,
                 name: `${vup.name} | fans image`,
                 panel: <FansImageWordCloud data={vup.fanTag} />,
+              },
+            ]);
+            setSelectedTabKey(`${tabNumber}`);
+            setTabNumber(tabNumber + 1);
+          }}
+          onFansHistory={(vup) => {
+            setTabs([
+              ...tabs,
+              {
+                id: `${tabNumber}`,
+                name: `${vup.name} | fans history`,
+                panel: <FansHistoryLine data={vup.fansHistory} />,
+              },
+            ]);
+            setSelectedTabKey(`${tabNumber}`);
+            setTabNumber(tabNumber + 1);
+          }}
+          onCoverage={(vups) => {
+            setTabs([
+              ...tabs,
+              {
+                id: `${tabNumber}`,
+                name: `${vups.map((vup) => `${vup.name} `)} | coverage`,
+                panel: <FansCoverageUpset vups={vups} />,
               },
             ]);
             setSelectedTabKey(`${tabNumber}`);

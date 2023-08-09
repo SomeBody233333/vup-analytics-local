@@ -53,6 +53,8 @@ const nextConfig = {
     "@spectrum-icons/illustrations",
     "@spectrum-icons/ui",
     "@spectrum-icons/workflow",
+    "echarts",
+    "zrender"
   ],
 };
 

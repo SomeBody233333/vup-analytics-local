@@ -9,6 +9,11 @@ type Vup = {
     tag: string;
     frequency: number;
   }[];
+  fansHistory: {
+    fans: number;
+    date: string;
+  }[];
+  fans: string[]
 };
 
 export default Vup;
