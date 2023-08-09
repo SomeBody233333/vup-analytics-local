@@ -43,7 +43,7 @@ export default function Home() {
     <Grid
       columnGap={"size-125"}
       areas={["sidebar info divider graph"]}
-      columns={["size-3000", "size-3400", "size-100", "1fr"]}
+      columns={["size-3000", "size-3400", "size-100", "auto"]}
       position={"fixed"}
       top={0}
       bottom={0}
@@ -79,7 +79,7 @@ export default function Home() {
       <View gridArea={"divider"} paddingY={"size-150"}>
         <Divider orientation="vertical" size="S" height={"100%"} />
       </View>
-      <View gridArea={"graph"} paddingY={"size-150"}>
+      <View paddingEnd={"size-200"} gridArea={"graph"} paddingY={"size-150"}>
         <Graph
           tabData={tabs}
           setTabData={setTabs}
