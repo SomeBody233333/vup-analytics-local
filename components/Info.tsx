@@ -136,6 +136,7 @@ function MultiInfo({
         <Flex direction={"row"} gap={"size-100"} wrap={"wrap"}>
           {vups.map((vup) => (
             <Avatar
+              key={vup.uid}
               src={vup.avatar}
               size={"avatar-size-700"}
               marginTop={"size-250"}

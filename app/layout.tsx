@@ -1,8 +1,10 @@
-"use client";
-
 import "./globals.css"
+import type { Metadata } from "next";
 
-import { Provider, defaultTheme } from "@adobe/react-spectrum";
+
+export const metadata: Metadata = {
+  referrer: "no-referrer",
+}
 
 export default function RootLayout({
   children,
@@ -12,7 +14,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <Provider theme={defaultTheme}>{children}</Provider>
+        {children}
       </body>
     </html>
   );

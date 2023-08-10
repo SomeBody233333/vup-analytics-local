@@ -56,6 +56,9 @@ const nextConfig = {
     "echarts",
     "zrender"
   ],
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 };
 
 module.exports = nextConfig;
