@@ -37,7 +37,7 @@ export default function FansCoverageUpset({ vups }: { vups: Vup[] }) {
       />
       <VennDiagram
         sets={sets}
-        width={300}
+        width={500}
         height={180}
         selection={selection}
         onHover={setSelection}
